@@ -13,7 +13,7 @@ interface Food {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pattern: string;
+  pattern: string | undefined;
   newFoodName: string;
   newFoodCalories: number;
   newFoodImage: string;
