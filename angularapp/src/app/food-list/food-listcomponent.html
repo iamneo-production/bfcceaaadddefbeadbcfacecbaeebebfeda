@@ -1,0 +1,66 @@
+<div class="foods">
+    <div class="search-box" id="searchBox">
+        <label for="searchBox">Search</label>
+        <input id="searchBox" type="text" [(ngModel)]="pattern">
+    </div>
+
+    <div class="newFood" id="newFood">
+        <button (click)="enableUserToAddFood()" class="newFood-button">Add New Food</button>
+        <br>
+        <div *ngIf="isEditing">
+            <div>
+                <br>
+                <label for="name" id="name">Name</label>
+                <input type="text" [(ngModel)]="newFoodName">
+                <br> <br>
+            </div>
+            <div>
+                <label for="newFood-calories" id="calories">Calories</label>
+                <input type="text" [(ngModel)]="newFoodCalories">
+                <br> <br>
+            </div>
+            <div>
+                <label for="name" id="image">Image</label>
+                <input type="text" [(ngModel)]="newFoodImage">
+                <br> <br>
+            </div>
+
+            <button (click)="newFood()" class="newFood-button">Add Food</button>
+        </div>
+    </div>
+
+    <ul class="food-list">
+        <li class="single-food" *ngIf="isEditing">
+            <img [src]="newFoodImage">
+            <h3 class="food-name">
+                {{ newFoodName }}
+                <small class="food-calories">{{ newFoodCalories }}</small>
+            </h3>
+        </li>
+
+
+
+        <li class="single-food" *ngFor="let food of foods | foodSearch:'name':pattern;">
+            <img [src]="food.image">
+
+            <h3 class="food-name">
+                {{ food.name }}
+                <small class="food-calories">{{ food.calories }}</small>
+            </h3>
+            <input type="text" #quantity value="1">
+            <button (click)="addToMyList(food, quantity)"> Add </button>
+        </li>
+    </ul>
+
+</div>
+
+<div class="my-food-list" id="displayContainer">
+    <h2>Today's Foods <small>{{ totalCalories }} cal</small></h2>
+    <ul>
+        <li *ngFor="let food of myList">
+            <span>{{ food.name }}</span>
+            <span>{{ food.calories }}</span>
+            <span *ngIf="food.quantity > 1">x{{ food.quantity }}</span>
+        </li>
+    </ul>
+</div>
