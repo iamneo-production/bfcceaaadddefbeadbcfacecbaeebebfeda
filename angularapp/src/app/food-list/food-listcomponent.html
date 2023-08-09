@@ -1,31 +1,31 @@
 <div class="foods">
-    <div class="search-box" id="searchBox">
-        <label for="searchBox">Search</label>
-        <input id="searchBox" type="text" [(ngModel)]="pattern">
+    <div class="search-box">
+        <label for="food-search">Search</label>
+        <input id="food-search" type="text" [(ngModel)]="pattern">
     </div>
 
-    <div class="newFood" id="newFood">
-        <button (click)="enableUserToAddFood()" class="newFood-button">Add New Food</button>
+    <div class="new-food">
+        <button (click)="enableUserToAddFood()" class="new-food-button">Add New Food</button>
         <br>
         <div *ngIf="isEditing">
             <div>
                 <br>
-                <label for="name" id="name">Name</label>
+                <label for="new-food-name">Name</label>
                 <input type="text" [(ngModel)]="newFoodName">
                 <br> <br>
             </div>
             <div>
-                <label for="newFood-calories" id="calories">Calories</label>
+                <label for="new-food-calories">Calories</label>
                 <input type="text" [(ngModel)]="newFoodCalories">
                 <br> <br>
             </div>
             <div>
-                <label for="name" id="image">Image</label>
+                <label for="new-food-name">Image</label>
                 <input type="text" [(ngModel)]="newFoodImage">
                 <br> <br>
             </div>
 
-            <button (click)="newFood()" class="newFood-button">Add Food</button>
+            <button (click)="newFood()" class="new-food-button">Add Food</button>
         </div>
     </div>
 
@@ -54,7 +54,7 @@
 
 </div>
 
-<div class="my-food-list" id="displayContainer">
+<div class="my-food-list">
     <h2>Today's Foods <small>{{ totalCalories }} cal</small></h2>
     <ul>
         <li *ngFor="let food of myList">
