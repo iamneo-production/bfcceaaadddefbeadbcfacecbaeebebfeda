@@ -44,7 +44,7 @@ export class FoodListComponent implements OnInit {
 
     this.isEditing = true;
     this.newFoodName = '';
-    this.newFoodCalories = null;
+    this.newFoodCalories = 0;
     this.newFoodImage = '';
   }
 
@@ -62,3 +62,14 @@ export class FoodListComponent implements OnInit {
     this.quantity = 1;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
