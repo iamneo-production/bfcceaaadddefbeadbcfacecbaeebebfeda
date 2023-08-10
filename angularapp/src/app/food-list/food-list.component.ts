@@ -7,7 +7,15 @@ import foodsList from '../foods';
   styleUrls: ['./food-list.component.css']
 })
 export class FoodListComponent implements OnInit {
-  foods: Object[];
+  private _foods: Object[] | undefined;
+  private readonly newProperty = this.foods;
+
+  public get foods(): Object[] | undefined {
+    return this._foods;
+  }
+  public set foods(value: Object[] | undefined) {
+    this._foods = value;
+  }
   myList: {
     name: string;
     calories: number;
@@ -40,12 +48,13 @@ export class FoodListComponent implements OnInit {
       quantity: 0
     };
 
-    this.foods.unshift(newFood);
+    this.newProperty.unshift(newFood);
 
     this.isEditing = true;
     this.newFoodName = '';
     const newLocal = this;
-    newLocal.newFoodCalories = null;
+    let newFoodCalories = newLocal.newFoodCalories;
+    newFoodCalories = null;
     this.newFoodImage = '';
   }
 
