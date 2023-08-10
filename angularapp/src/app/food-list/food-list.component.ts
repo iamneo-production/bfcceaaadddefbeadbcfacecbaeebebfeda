@@ -14,12 +14,12 @@ export class FoodListComponent implements OnInit {
     quantity: number;
     image: string;
   }[] = [];
-  pattern: string;
+  pattern: string | undefined;
   isEditing: boolean = false;
   newFoodName: string = 'Food Name';
   newFoodCalories: number = 98;
   newFoodImage: string = 'https://pngimg.com/uploads/milk/milk_PNG12762.png';
-  quantity: number;
+  quantity: number | undefined;
   totalCalories: number = 0;
 
   constructor() {}
@@ -44,7 +44,8 @@ export class FoodListComponent implements OnInit {
 
     this.isEditing = true;
     this.newFoodName = '';
-    this.newFoodCalories = null;
+    const newLocal = this;
+    newLocal.newFoodCalories = null;
     this.newFoodImage = '';
   }
 
