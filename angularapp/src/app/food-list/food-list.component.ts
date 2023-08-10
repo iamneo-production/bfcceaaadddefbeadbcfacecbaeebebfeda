@@ -48,7 +48,7 @@ export class FoodListComponent implements OnInit {
     this.newFoodImage = '';
   }
 
-  addToMyList(food, quantityInput) {
+  addToMyList({ food, quantityInput }: { food: { name: any; quantity: any; calories: any; image?: string; }; quantityInput: { value: any; }; }): void {
     const existingFood = this.myList.find(item => item.name === food.name);
     const quantity = Number(quantityInput.value);
 
