@@ -7,19 +7,19 @@ import foodsList from '../foods';
   styleUrls: ['./food-list.component.css']
 })
 export class FoodListComponent implements OnInit {
-  foods: Object[] | undefined;
+  foods: Object[];
   myList: {
     name: string;
     calories: number;
     quantity: number;
     image: string;
   }[] = [];
-  pattern: string | undefined;
+  pattern: string;
   isEditing: boolean = false;
   newFoodName: string = 'Food Name';
   newFoodCalories: number = 98;
   newFoodImage: string = 'https://pngimg.com/uploads/milk/milk_PNG12762.png';
-  quantity: number | undefined;
+  quantity: number;
   totalCalories: number = 0;
 
   constructor() {}
@@ -40,8 +40,7 @@ export class FoodListComponent implements OnInit {
       quantity: 0
     };
 
-    const newLocal = this;
-    newLocal.foods.unshift(newFood);
+    this.foods.unshift(newFood);
 
     this.isEditing = true;
     this.newFoodName = '';
