@@ -7,22 +7,22 @@ import foodsList from '../foods';
   styleUrls: ['./food-list.component.css']
 })
 export class FoodListComponent implements OnInit {
-  foods: Object[];
+  foods: Object[] | undefined;
   myList: {
     name: string;
     calories: number;
     quantity: number;
     image: string;
   }[] = [];
-  pattern: string;
+  pattern: string | undefined;
   isEditing: boolean = false;
   newFoodName: string = 'Food Name';
   newFoodCalories: number = 98;
   newFoodImage: string = 'https://pngimg.com/uploads/milk/milk_PNG12762.png';
-  quantity: number;
+  quantity: number | undefined;
   totalCalories: number = 0;
 
-  constructor() {}
+  constructor() { /* TODO document why this constructor is empty */ }
 
   ngOnInit() {
     this.foods = foodsList;
@@ -51,10 +51,11 @@ export class FoodListComponent implements OnInit {
   addToMyList(food, quantityInput) {
     const existingFood = this.myList.find(item => item.name === food.name);
     const quantity = Number(quantityInput.value);
-
-    if (existingFood) {
+  
+    if (existingFood): void {
       existingFood.quantity += quantity;
-    } else {
+    } 
+    else {
       food.quantity = quantity;
       this.myList.push(food);
     }
@@ -62,6 +63,7 @@ export class FoodListComponent implements OnInit {
     this.quantity = 1;
   }
 }
+
 
 
 
